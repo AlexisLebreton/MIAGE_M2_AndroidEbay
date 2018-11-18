@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "root",
+    "password": "bdmdp",
+    "database": "database_development_ebay",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "root",
+    "password": "bdmdp",
+    "database": "database_test_ebay",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "root",
+    "password": "bdmdp",
+    "database": "database_production_ebay",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
+}

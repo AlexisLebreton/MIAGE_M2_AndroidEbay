@@ -1,0 +1,24 @@
+{
+  "name": "serverebay",
+  "version": "1.0.0",
+  "description": "Serveur HTTP pour API REST",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "server",
+    "http",
+    "api",
+    "rest"
+  ],
+  "author": "Alexis Lebreton",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4",
+    "joi": "^13.1.0",
+    "mongodb": "^3.1.10",
+    "mysql": "^2.16.0",
+    "sequelize": "^3.30.4"
+  }
+}
