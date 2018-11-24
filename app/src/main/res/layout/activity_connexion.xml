@@ -38,7 +38,6 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent">
 
-
         <TextView
             android:id="@+id/connexion_tv_login"
             android:layout_width="0dp"
@@ -54,11 +53,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textPersonName"
+            android:inputType="text"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/connexion_tv_login" />
-
 
     </android.support.constraint.ConstraintLayout>
 
@@ -69,7 +67,6 @@
         app:layout_constraintBottom_toTopOf="@+id/connexion_cl_connexion"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent">
-
 
         <TextView
             android:id="@+id/connexion_tv_motdepasse"
@@ -90,7 +87,6 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/connexion_tv_motdepasse" />
-
 
     </android.support.constraint.ConstraintLayout>
 

@@ -1,7 +1,29 @@
 <resources>
+
     <string name="app_name">ApplicationEbay</string>
+
     <string name="connexion_tv_login">Login</string>
     <string name="connexion_tv_motdepasse">Mot de passe</string>
     <string name="connexion_btn_connexion">Connexion</string>
     <string name="connexion_btn_sinscrire">S\'inscrire</string>
+
+    <string name="sinscrire_tv_mail">Adresse mail</string>
+    <string name="sinscrire_tv_nom">Nom</string>
+    <string name="sinscrire_tv_prenom">Prenom</string>
+    <string name="sinscrire_tv_login">Login</string>
+    <string name="sinscrire_tv_motdepasse">Mot de passe</string>
+    <string name="sinscrire_tv_adresse">Adresse</string>
+    <string name="sinscrire_tv_photoprofil">Photo de profil</string>
+    <string name="sinscrire_btn_sinscrire">S\'inscrire</string>
+
+    <string name="title_activity_accueil">AccueilActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+
+    <string name="accueil_tv_listeannonces">Liste des annonces :</string>
+
+
 </resources>

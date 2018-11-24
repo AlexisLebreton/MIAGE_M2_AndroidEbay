@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <item
+        android:id="@+id/nav_accueil"
+        android:title="Accueil" />
+
+    <item android:title="En cours">
+        <menu>
+        <item
+            android:id="@+id/nav_mesannonces"
+            android:title="Mes annonces" />
+        <item
+            android:id="@+id/nav_mesencheres"
+            android:title="Mes enchères" />
+        </menu>
+    </item>
+
+
+    <item android:title="Terminé">
+        <menu>
+            <item
+                android:id="@+id/nav_mesrdv"
+                android:title="Mes rendez-vous" />
+        </menu>
+    </item>
+
+    <item android:title="Compte">
+        <menu>
+            <item
+                android:id="@+id/nav_modifiermoncompte"
+                android:title="Modifier mon compte" />
+            <item
+                android:id="@+id/nav_deconnection"
+                android:title="Deconnection" />
+        </menu>
+    </item>
+
+</menu>
