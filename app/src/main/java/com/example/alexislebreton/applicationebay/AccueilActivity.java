@@ -61,15 +61,17 @@ public class AccueilActivity extends AppCompatActivity
             Intent ajouterAnnonceActivity = new Intent (AccueilActivity.this, AjouterAnnonceActivity.class);
             startActivity(ajouterAnnonceActivity);
         } else if (id == R.id.nav_mesannonces ) {
-
+            Intent listeMesAnnoncesActivity = new Intent (AccueilActivity.this, ListeMesAnnoncesActivity.class);
+            startActivity(listeMesAnnoncesActivity);
         } else if (id == R.id.nav_mesencheres) {
-
+            Intent listeMesEncheresActivity = new Intent (AccueilActivity.this, ListeMesEncheresActivity.class);
+            startActivity(listeMesEncheresActivity);
         } else if (id == R.id.nav_mesrdv) {
-
+            Intent listeMesRdvActivity = new Intent (AccueilActivity.this, ListeMesRdvActivity.class);
+            startActivity(listeMesRdvActivity);
         } else if (id == R.id.nav_modifiermoncompte) {
             Intent compteActivity = new Intent (AccueilActivity.this, CompteActivity.class);
             startActivity(compteActivity);
-
         } else if (id == R.id.nav_deconnection) {
             //TODO effacer param id utilisateur
             finish();

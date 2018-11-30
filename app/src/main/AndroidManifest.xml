@@ -21,7 +21,11 @@
             android:name=".AccueilActivity"
             android:label="@string/title_activity_accueil"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".AjouterAnnonceActivity"></activity>
+        <activity android:name=".AjouterAnnonceActivity" />
+        <activity android:name=".ListeMesAnnoncesActivity" />
+        <activity android:name=".ListeMesEncheresActivity" />
+        <activity android:name=".ListeMesRdvActivity" />
+        <activity android:name=".AnnonceActivity"></activity>
     </application>
 
 </manifest>

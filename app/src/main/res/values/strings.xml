@@ -28,7 +28,7 @@
     <string name="accueil_it_mesannonces">Mes annonces</string>
     <string name="accueil_it_mesencheres">Mes encheres</string>
     <string name="accueil_it_mesrdv">Mes rendez-vous</string>
-    <string name="accueil_it_modifiermoncompte">Mes rendez-vous</string>
+    <string name="accueil_it_modifiermoncompte">Modifier mon compte</string>
     <string name="accueil_it_deconnection">Déconnection</string>
     <string name="accueil_it_encours">En cours</string>
     <string name="accueil_it_termine">Terminé</string>
@@ -40,6 +40,20 @@
     <string name="ajouterannonce_tv_photobien">Photo du bien</string>
     <string name="ajouterannonce_btn_enregistrer">Enregistrer</string>
 
+    <string name="liste_mes_annonces_tv_listeannonces">Mes annonces :</string>
 
+    <string name="liste_mes_encheres_tv_listeannonces">Mes encheres :</string>
+
+    <string name="liste_mes_rdv_tv_listeannonces">Mes rendez-vous :</string>
+
+    <string name="annonce_tv_nom">Nom du bien</string>
+    <string name="annonce_tv_description">Description</string>
+    <string name="annonce_tv_prix">Prix planché</string>
+    <string name="annonce_tv_photobien">Photo du bien</string>
+    <string name="annonce_tv_derniere_enchere">Derniere enchère</string>
+    <string name="annonce_tv_encherir">Nouvelle enchère</string>
+    <string name="annonce_btn_encherir">Encherir</string>
+    <string name="annonce_tv_rdv">Date/heure de rendez-vous</string>
+    <string name="annonce_btn_rdv">Fixer un rendez-vous</string>
 
 </resources>
