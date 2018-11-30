@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SinscrireActivity">
+    tools:context=".CompteActivity">
 
     <android.support.constraint.ConstraintLayout
-        android:id="@+id/sinscrire_cl_mail"
+        android:id="@+id/compte_cl_mail"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
@@ -15,206 +15,206 @@
         app:layout_constraintRight_toRightOf="parent">
 
         <TextView
-            android:id="@+id/sinscrire_tv_mail"
+            android:id="@+id/compte_tv_mail"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/sinscrire_tv_mail"
+            android:text="@string/compte_tv_mail"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
 
         <EditText
-            android:id="@+id/sinscrire_et_mail"
+            android:id="@+id/compte_et_mail"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="text"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/sinscrire_tv_mail" />
+            app:layout_constraintTop_toBottomOf="@+id/compte_tv_mail" />
     </android.support.constraint.ConstraintLayout>
 
     <android.support.constraint.ConstraintLayout
-        android:id="@+id/sinscrire_cl_nom"
+        android:id="@+id/compte_cl_nom"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/sinscrire_cl_mail"
+        app:layout_constraintTop_toBottomOf="@+id/compte_cl_mail"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent">
 
         <TextView
-            android:id="@+id/sinscrire_tv_nom"
+            android:id="@+id/compte_tv_nom"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/sinscrire_tv_nom"
+            android:text="@string/compte_tv_nom"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
 
         <EditText
-            android:id="@+id/sinscrire_et_nom"
+            android:id="@+id/compte_et_nom"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="text"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/sinscrire_tv_nom" />
+            app:layout_constraintTop_toBottomOf="@+id/compte_tv_nom" />
     </android.support.constraint.ConstraintLayout>
 
     <android.support.constraint.ConstraintLayout
-        android:id="@+id/sinscrire_cl_prenom"
+        android:id="@+id/compte_cl_prenom"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/sinscrire_cl_nom"
+        app:layout_constraintTop_toBottomOf="@+id/compte_cl_nom"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent">
 
         <TextView
-            android:id="@+id/sinscrire_tv_prenom"
+            android:id="@+id/compte_tv_prenom"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/sinscrire_tv_prenom"
+            android:text="@string/compte_tv_prenom"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
 
         <EditText
-            android:id="@+id/sinscrire_et_prenom"
+            android:id="@+id/compte_et_prenom"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="text"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/sinscrire_tv_prenom" />
+            app:layout_constraintTop_toBottomOf="@+id/compte_tv_prenom" />
     </android.support.constraint.ConstraintLayout>
 
     <android.support.constraint.ConstraintLayout
-        android:id="@+id/sinscrire_cl_login"
+        android:id="@+id/compte_cl_login"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/sinscrire_cl_prenom"
+        app:layout_constraintTop_toBottomOf="@+id/compte_cl_prenom"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent">
 
         <TextView
-            android:id="@+id/sinscrire_tv_login"
+            android:id="@+id/compte_tv_login"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/sinscrire_tv_login"
+            android:text="@string/compte_tv_login"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
 
         <EditText
-            android:id="@+id/sinscrire_et_login"
+            android:id="@+id/compte_et_login"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="text"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/sinscrire_tv_login" />
+            app:layout_constraintTop_toBottomOf="@+id/compte_tv_login" />
     </android.support.constraint.ConstraintLayout>
 
     <android.support.constraint.ConstraintLayout
-        android:id="@+id/sinscrire_cl_motdepasse"
+        android:id="@+id/compte_cl_motdepasse"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/sinscrire_cl_login"
+        app:layout_constraintTop_toBottomOf="@+id/compte_cl_login"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent">
 
         <TextView
-            android:id="@+id/sinscrire_tv_motdepasse"
+            android:id="@+id/compte_tv_motdepasse"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/sinscrire_tv_motdepasse"
+            android:text="@string/compte_tv_motdepasse"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
 
         <EditText
-            android:id="@+id/sinscrire_et_motdepasse"
+            android:id="@+id/compte_et_motdepasse"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPassword"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/sinscrire_tv_motdepasse" />
+            app:layout_constraintTop_toBottomOf="@+id/compte_tv_motdepasse" />
     </android.support.constraint.ConstraintLayout>
 
     <android.support.constraint.ConstraintLayout
-        android:id="@+id/sinscrire_cl_adresse"
+        android:id="@+id/compte_cl_adresse"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/sinscrire_cl_motdepasse"
+        app:layout_constraintTop_toBottomOf="@+id/compte_cl_motdepasse"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent">
 
         <TextView
-            android:id="@+id/sinscrire_tv_adresse"
+            android:id="@+id/compte_tv_adresse"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/sinscrire_tv_adresse"
+            android:text="@string/compte_tv_adresse"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
 
         <EditText
-            android:id="@+id/sinscrire_et_adresse"
+            android:id="@+id/compte_et_adresse"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPassword"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/sinscrire_tv_adresse" />
+            app:layout_constraintTop_toBottomOf="@+id/compte_tv_adresse" />
     </android.support.constraint.ConstraintLayout>
 
     <android.support.constraint.ConstraintLayout
-        android:id="@+id/sinscrire_cl_photoprofil"
+        android:id="@+id/compte_cl_photoprofil"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/sinscrire_cl_adresse"
+        app:layout_constraintTop_toBottomOf="@+id/compte_cl_adresse"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent">
 
         <TextView
-            android:id="@+id/sinscrire_tv_photoprofil"
+            android:id="@+id/compte_tv_photoprofil"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/sinscrire_tv_photoprofil"
+            android:text="@string/compte_tv_photoprofil"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
 
         <ImageButton
-            android:id="@+id/sinscrire_ib_photoprofil"
+            android:id="@+id/compte_ib_photoprofil"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:srcCompat="@tools:sample/avatars"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/sinscrire_tv_photoprofil" />
+            app:layout_constraintTop_toBottomOf="@+id/compte_tv_photoprofil" />
     </android.support.constraint.ConstraintLayout>
 
     <android.support.constraint.ConstraintLayout
 
-        android:id="@+id/sinscrire_cl_sinscrire"
+        android:id="@+id/compte_cl_enregistrer"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/sinscrire_cl_photoprofil"
+        app:layout_constraintTop_toBottomOf="@+id/compte_cl_photoprofil"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent">
 
         <Button
-            android:id="@+id/sinscrire_btn_sinscrire"
+            android:id="@+id/compte_btn_enregistrer"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/connexion_btn_sinscrire"
+            android:text="@string/compte_btn_enregistrer"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>

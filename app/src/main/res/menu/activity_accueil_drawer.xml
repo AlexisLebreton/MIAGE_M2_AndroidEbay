@@ -3,38 +3,38 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-    <item
-        android:id="@+id/nav_accueil"
-        android:title="Accueil" />
 
-    <item android:title="En cours">
+    <item android:title="@string/accueil_it_encours">
         <menu>
-        <item
-            android:id="@+id/nav_mesannonces"
-            android:title="Mes annonces" />
-        <item
-            android:id="@+id/nav_mesencheres"
-            android:title="Mes enchères" />
+            <item
+                android:id="@+id/nav_ajouterannonce"
+                android:title="@string/accueil_it_ajouteruneannonce" />
+            <item
+                android:id="@+id/nav_mesannonces"
+                android:title="@string/accueil_it_mesannonces" />
+            <item
+                android:id="@+id/nav_mesencheres"
+                android:title="@string/accueil_it_mesencheres" />
         </menu>
     </item>
 
 
-    <item android:title="Terminé">
+    <item android:title="@string/accueil_it_termine">
         <menu>
             <item
                 android:id="@+id/nav_mesrdv"
-                android:title="Mes rendez-vous" />
+                android:title="@string/accueil_it_mesrdv" />
         </menu>
     </item>
 
-    <item android:title="Compte">
+    <item android:title="@string/accueil_it_compte">
         <menu>
             <item
                 android:id="@+id/nav_modifiermoncompte"
-                android:title="Modifier mon compte" />
+                android:title="@string/accueil_it_modifiermoncompte" />
             <item
                 android:id="@+id/nav_deconnection"
-                android:title="Deconnection" />
+                android:title="@string/accueil_it_deconnection" />
         </menu>
     </item>
 

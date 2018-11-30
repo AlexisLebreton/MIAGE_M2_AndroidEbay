@@ -1,5 +1,6 @@
 package com.example.alexislebreton.applicationebay;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -56,18 +57,22 @@ public class AccueilActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_accueil) {
-            // Handle the camera action
-        } else if (id == R.id.nav_mesannonces) {
+        if (id == R.id.nav_ajouterannonce) {
+            Intent ajouterAnnonceActivity = new Intent (AccueilActivity.this, AjouterAnnonceActivity.class);
+            startActivity(ajouterAnnonceActivity);
+        } else if (id == R.id.nav_mesannonces ) {
 
         } else if (id == R.id.nav_mesencheres) {
 
         } else if (id == R.id.nav_mesrdv) {
 
         } else if (id == R.id.nav_modifiermoncompte) {
+            Intent compteActivity = new Intent (AccueilActivity.this, CompteActivity.class);
+            startActivity(compteActivity);
 
         } else if (id == R.id.nav_deconnection) {
-
+            //TODO effacer param id utilisateur
+            finish();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

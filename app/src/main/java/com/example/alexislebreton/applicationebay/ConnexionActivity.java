@@ -16,8 +16,8 @@ public class ConnexionActivity extends AppCompatActivity {
         final Button connexion_btn_sinscrire = (Button)findViewById(R.id.connexion_btn_sinscrire);
         connexion_btn_sinscrire.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent sinscrireActivity = new Intent (ConnexionActivity.this, SinscrireActivity.class);
-                startActivity(sinscrireActivity);
+                Intent compteActivity = new Intent (ConnexionActivity.this, CompteActivity.class);
+                startActivity(compteActivity);
 
 
 
@@ -27,6 +27,8 @@ public class ConnexionActivity extends AppCompatActivity {
         final Button connexion_btn_connexion = (Button)findViewById(R.id.connexion_btn_connexion);
         connexion_btn_connexion.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                //TODO verif utilisateur en bd
+                //TODO passer param id utilisateur
                 Intent accueilActivity = new Intent (ConnexionActivity.this, AccueilActivity.class);
                 startActivity(accueilActivity);
             }

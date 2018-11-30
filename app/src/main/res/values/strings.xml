@@ -7,16 +7,16 @@
     <string name="connexion_btn_connexion">Connexion</string>
     <string name="connexion_btn_sinscrire">S\'inscrire</string>
 
-    <string name="sinscrire_tv_mail">Adresse mail</string>
-    <string name="sinscrire_tv_nom">Nom</string>
-    <string name="sinscrire_tv_prenom">Prenom</string>
-    <string name="sinscrire_tv_login">Login</string>
-    <string name="sinscrire_tv_motdepasse">Mot de passe</string>
-    <string name="sinscrire_tv_adresse">Adresse</string>
-    <string name="sinscrire_tv_photoprofil">Photo de profil</string>
-    <string name="sinscrire_btn_sinscrire">S\'inscrire</string>
+    <string name="compte_tv_mail">Adresse mail</string>
+    <string name="compte_tv_nom">Nom</string>
+    <string name="compte_tv_prenom">Prenom</string>
+    <string name="compte_tv_login">Login</string>
+    <string name="compte_tv_motdepasse">Mot de passe</string>
+    <string name="compte_tv_adresse">Adresse</string>
+    <string name="compte_tv_photoprofil">Photo de profil</string>
+    <string name="compte_btn_enregistrer">Enregistrer</string>
 
-    <string name="title_activity_accueil">AccueilActivity</string>
+    <string name="title_activity_accueil">Accueil</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Android Studio</string>
@@ -24,6 +24,22 @@
     <string name="nav_header_desc">Navigation header</string>
 
     <string name="accueil_tv_listeannonces">Liste des annonces :</string>
+    <string name="accueil_it_ajouteruneannonce">Ajouter une annonce</string>
+    <string name="accueil_it_mesannonces">Mes annonces</string>
+    <string name="accueil_it_mesencheres">Mes encheres</string>
+    <string name="accueil_it_mesrdv">Mes rendez-vous</string>
+    <string name="accueil_it_modifiermoncompte">Mes rendez-vous</string>
+    <string name="accueil_it_deconnection">Déconnection</string>
+    <string name="accueil_it_encours">En cours</string>
+    <string name="accueil_it_termine">Terminé</string>
+    <string name="accueil_it_compte">Compte</string>
+
+    <string name="ajouterannonce_tv_nom">Nom du bien</string>
+    <string name="ajouterannonce_tv_description">Description</string>
+    <string name="ajouterannonce_tv_prix">Prix planché</string>
+    <string name="ajouterannonce_tv_photobien">Photo du bien</string>
+    <string name="ajouterannonce_btn_enregistrer">Enregistrer</string>
+
 
 
 </resources>

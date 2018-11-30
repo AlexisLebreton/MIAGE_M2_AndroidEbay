@@ -16,11 +16,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SinscrireActivity" />
+        <activity android:name=".CompteActivity" />
         <activity
             android:name=".AccueilActivity"
             android:label="@string/title_activity_accueil"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".AjouterAnnonceActivity"></activity>
     </application>
 
 </manifest>
