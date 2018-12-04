@@ -4,13 +4,21 @@ import java.lang.reflect.Field;
 
 public class Bid {
 
-    private String idAuction, bidderUsername;
+    private String _id, idAuction, bidderUsername;
     private Long price;
 
     public Bid(String idAuction, String bidderUsername, Long price) {
         this.idAuction = idAuction;
         this.bidderUsername = bidderUsername;
         this.price = price;
+    }
+
+    public String get_id() {
+        return _id;
+    }
+
+    public void set_id(String _id) {
+        this._id = _id;
     }
 
     public String getIdAuction() {

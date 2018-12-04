@@ -4,7 +4,7 @@ import java.lang.reflect.Field;
 
 public class User {
 
-    private String username, pwd, lastname, firstname, mail, adress, photoURL;
+    private String _id, username, pwd, lastname, firstname, mail, adress, photoURL;
 
     public User(String username, String pwd, String lastname, String firstname, String mail, String adress, String photoURL) {
         this.username = username;
@@ -14,6 +14,14 @@ public class User {
         this.mail = mail;
         this.adress = adress;
         this.photoURL = photoURL;
+    }
+
+    public String get_id() {
+        return _id;
+    }
+
+    public void set_id(String _id) {
+        this._id = _id;
     }
 
     public String getUsername() {

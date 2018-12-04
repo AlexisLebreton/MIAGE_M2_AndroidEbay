@@ -4,6 +4,7 @@ import java.lang.reflect.Field;
 
 public class Auction {
 
+    private String _id;
     private String sellerUsername;
     private String itemName;
     private String itemDescription;
@@ -22,6 +23,14 @@ public class Auction {
         this.timespan = timespan;
         this.photoURL = photoURL;
         this.status = status;
+    }
+
+    public String get_id() {
+        return _id;
+    }
+
+    public void set_id(String _id) {
+        this._id = _id;
     }
 
     public String getSellerUsername() {

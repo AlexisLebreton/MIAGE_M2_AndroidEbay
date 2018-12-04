@@ -23,7 +23,10 @@ public interface ApiInterface {
     Call<User> getUserByUserName(@Path("username") String username);
 
     @POST("user")
-    Call<User> addNewUser(@Body User user);
+    Call<String> addNewUser(@Body User user);
+
+    @POST("users/updateUserByUsername/{username}")
+    Call<String> updateUserByUsername(@Path("username") String username, @Body User user);
 
     @GET("users/deleteUserByUsername/{username}")
     Call<User> deleteUserByUsername(@Path("username") String username);
@@ -39,7 +42,7 @@ public interface ApiInterface {
     Call<Bid> getBidByIdAuction(@Path("idAuction") String idAuction);
 
     @POST("bid")
-    Call<Bid> addNewBid(@Body Bid bid);
+    Call<String> addNewBid(@Body Bid bid);
 
     @GET("bids/deleteBidByIdAuction/{idAuction}")
     Call<Bid> deleteBidByIdAuction(@Path("idAuction") String idAuction);
@@ -52,7 +55,7 @@ public interface ApiInterface {
     Call<Auction> getAuctionsBySellerUsername(@Path("username") String username);
 
     @POST("auction")
-    Call<Auction> addNewAuction(@Body Auction auction);
+    Call<String> addNewAuction(@Body Auction auction);
 
     @GET("auctions/deleteAuctionByIdAuction/{idAuction}")
     Call<Auction> deleteAuctionByIdAuction(@Path("idAuction") String idAuction);
