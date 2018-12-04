@@ -93,8 +93,20 @@ app.post('/user', function (req, res) {
         db = db.db(dbName);
         db.collection("users").insertOne(req.body, null, function (error, result) {
             if (error) throw error;
-            console.log(result);
             res.json(result.insertedId);
+        });
+    });
+})
+
+// updateUserByUsername
+app.post('/users/updateUserByUsername/:username', function (req, res) {
+    MongoClient.connect(mongoUrl, function (error, db) {
+        if (error) return funcCallback(error);
+
+        db = db.db(dbName);
+		db.collection("users").replaceOne({ username: req.params.username }, req.body, function (error, result) {
+            if (error) throw error;
+            res.json(result.modifiedCount);
         });
     });
 })
@@ -241,14 +253,12 @@ app.post('/auction', function (req, res) {
 
 // deleteAuctionByIdAuction
 app.get('/auctions/deleteAuctionByIdAuction/:idAuction', function (req, res) {
-    console.log(req.params.idAuction);
     MongoClient.connect(mongoUrl, function (error, db) {
         if (error) return funcCallback(error);
 
         db = db.db(dbName);
         db.collection("auctions").deleteMany({ _id: new mongodb.ObjectId(req.params.idAuction) }, function (error, result) {
             if (error) throw error;
-            console.log(result);
             res.json(result.deletedCount);
         });
     });
