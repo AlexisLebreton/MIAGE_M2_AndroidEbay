@@ -227,14 +227,6 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/annonce_btn_rdv"/>
 
-        <Button
-            android:id="@+id/annonce_btn_rdvconfirmer"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="@string/annonce_btn_rdvconfirmer"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/annonce_btn_rdvannuler"/>
     </android.support.constraint.ConstraintLayout>
 
 </android.support.constraint.ConstraintLayout>

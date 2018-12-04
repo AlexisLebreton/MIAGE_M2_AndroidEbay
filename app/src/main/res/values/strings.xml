@@ -55,7 +55,7 @@
     <string name="annonce_btn_encherir">Encherir</string>
     <string name="annonce_tv_rdv">Date/heure de rendez-vous</string>
     <string name="annonce_btn_rdv">Fixer un rendez-vous</string>
-    <string name="annonce_btn_rdvannuler">Refuser un rendez-vous</string>
     <string name="annonce_btn_rdvcofirmer">Confirmer un rendez-vous</string>
+    <string name="annonce_btn_rdvannuler">Refuser un rendez-vous</string>
 
 </resources>
