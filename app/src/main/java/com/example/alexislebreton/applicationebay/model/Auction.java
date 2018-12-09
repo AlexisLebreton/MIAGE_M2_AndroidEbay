@@ -14,15 +14,15 @@ public class Auction {
     private String photoURL;
     private String status;
 
-    public Auction(String sellerUsername, String itemName, String itemDescription, Long minPrice, String date, Long timespan, String photoURL, String status) {
+    public Auction(String sellerUsername, String itemName, String itemDescription, Long minPrice, String date, String photoURL) {
         this.sellerUsername = sellerUsername;
         this.itemName = itemName;
         this.itemDescription = itemDescription;
         this.minPrice = minPrice;
         this.date = date;
-        this.timespan = timespan;
+        this.timespan = 5L;
         this.photoURL = photoURL;
-        this.status = status;
+        this.status = "ON";
     }
 
     public String get_id() {

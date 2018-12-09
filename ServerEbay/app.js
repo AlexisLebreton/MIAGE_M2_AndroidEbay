@@ -78,7 +78,7 @@ app.get('/users/getUserByUserName/:username', function (req, res) {
 
 // addNewUser
 /*{ 
-	"username" : "entrax",
+	"username" : "Entrax",
 	"pwd" : "Alakazam36/",
 	"lastname" : "Fines",
 	"firstname" : "Guillaume",
@@ -171,7 +171,7 @@ app.get('/bids/getBidByIdAuction/:idAuction', function (req, res) {
 // addNewBid
 /*{ 
 	"idAuction" : "5c02d7e4548b18014824c029",
-	"bidderUsername" : "entrax",
+	"bidderUsername" : "Entrax",
     "price" : 3
 }*/
 app.post('/bid', function (req, res) {
@@ -230,11 +230,11 @@ app.get('/auctions/getAuctionsBySellerUsername/:username', function (req, res) {
 
 // addNewAuction
 /*{ 
-	"sellerUsername" : "entrax",
+	"sellerUsername" : "Entrax",
 	"itemName" : "Clavier d'ordinateur",
 	"itemDescription" : "Un clavier d’ordinateur est une interface homme-machine munie de touches permettant à l'utilisateur d'entrer dans l'ordinateur une séquence de données, notamment textuelle.",
 	"minPrice" : 1,
-	"date" : "2018-12-01T18:32:03.884Z",
+	"date" : "Sun Dec 09 18:33:09 GMT+01:00 2018",
 	"timespan" : 5,
 	"photoURL" : "",
     "status" : "active"

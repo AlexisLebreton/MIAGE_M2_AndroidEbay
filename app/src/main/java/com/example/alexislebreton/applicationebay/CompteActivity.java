@@ -1,5 +1,7 @@
 package com.example.alexislebreton.applicationebay;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Build;
@@ -27,6 +29,7 @@ public class CompteActivity extends AppCompatActivity {
     private SharedPreferences.Editor myPrefsEditor;
     private Gson gson = new Gson();
     private User currentUser;
+    private View mProgressView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +53,8 @@ public class CompteActivity extends AppCompatActivity {
         final EditText compte_et_motdepasse = findViewById(R.id.compte_et_motdepasse);
         final EditText compte_et_adresse = findViewById(R.id.compte_et_adresse);
 
+        mProgressView = findViewById(R.id.progressView_compte);
+
         if (currentUser != null) {
             compte_et_login.setEnabled(false);
 
@@ -63,6 +68,7 @@ public class CompteActivity extends AppCompatActivity {
         final Button sinscrire_btn_sinscrire = findViewById(R.id.compte_btn_enregistrer);
         sinscrire_btn_sinscrire.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                showProgress(true);
 
                 String email = compte_et_mail.getText().toString();
                 String nom = compte_et_nom.getText().toString();
@@ -79,6 +85,7 @@ public class CompteActivity extends AppCompatActivity {
                         @Override
                         public void onResponse(Call<String> call, Response<String> response) {
                             Toast.makeText(getApplicationContext(), "Inscription réussie !\n Bienvenue " + user.getUsername(), Toast.LENGTH_LONG).show();
+                            finish();
                         }
 
                         @Override
@@ -86,6 +93,8 @@ public class CompteActivity extends AppCompatActivity {
                             // Log error here since request failed
                             Log.e(TAG, "onFailure Erreur : " + t.toString());
                             Toast.makeText(getApplicationContext(), "Inscription ratée !", Toast.LENGTH_LONG).show();
+                            showProgress(false);
+                            finish();
                         }
                     });
                 } else {
@@ -100,8 +109,12 @@ public class CompteActivity extends AppCompatActivity {
                                 updatedUser.set_id(currentUser.get_id());
                                 myPrefsEditor.putString("currentUser", gson.toJson(updatedUser));
                                 myPrefsEditor.apply();
+                                showProgress(false);
+                                finish();
                             } else {
                                 Toast.makeText(getApplicationContext(), "Modification(s) ratée !", Toast.LENGTH_LONG).show();
+                                showProgress(false);
+                                finish();
                             }
                         }
 
@@ -109,12 +122,30 @@ public class CompteActivity extends AppCompatActivity {
                         public void onFailure(Call<String> call, Throwable t) {
                             // Log error here since request failed
                             Log.e(TAG, "onFailure Erreur : " + t.toString());
+                            showProgress(false);
+                            finish();
                         }
                     });
                 }
-                finish();
 
             }
         });
+    }
+
+    private void showProgress(final boolean show) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB_MR2) {
+            int shortAnimTime = getResources().getInteger(android.R.integer.config_shortAnimTime);
+
+            mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
+            mProgressView.animate().setDuration(shortAnimTime).alpha(
+                    show ? 1 : 0).setListener(new AnimatorListenerAdapter() {
+                @Override
+                public void onAnimationEnd(Animator animation) {
+                    mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
+                }
+            });
+        } else {
+            mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
+        }
     }
 }
