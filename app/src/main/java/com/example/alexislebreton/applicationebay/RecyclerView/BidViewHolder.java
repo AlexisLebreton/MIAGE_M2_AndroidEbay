@@ -6,26 +6,34 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.alexislebreton.applicationebay.R;
-import com.example.alexislebreton.applicationebay.model.Auction;
 import com.example.alexislebreton.applicationebay.model.Bid;
 
 public class BidViewHolder extends RecyclerView.ViewHolder {
 
-    private TextView idAuctionView, bidderUsernameView, priceView;
+    private TextView itemNameView, statusView, sellerUsernameView, descriptionView, bidderUsernameView, bidPriceView, timeRemainingView;
     private ImageView imageView;
 
     //itemView est la vue correspondante à 1 cellule
     public BidViewHolder(View itemView) {
         super(itemView);
-        idAuctionView = (TextView) itemView.findViewById(R.id.idAuction);
-        bidderUsernameView = (TextView) itemView.findViewById(R.id.bidderUsername);
-        priceView = (TextView) itemView.findViewById(R.id.price);
+        itemNameView = itemView.findViewById(R.id.itemName);
+        statusView = itemView.findViewById(R.id.status);
+        descriptionView = itemView.findViewById(R.id.description);
+        bidderUsernameView = itemView.findViewById(R.id.bidderUsername);
+        bidPriceView = itemView.findViewById(R.id.bidPrice);
+        timeRemainingView = itemView.findViewById(R.id.timeRemaining);
     }
 
-    //puis ajouter une fonction pour remplir la cellule en fonction d'un MyObject
     public void bind(Bid myBid) {
-        idAuctionView.setText(myBid.getIdAuction());
+        itemNameView.setText(myBid.getAuction().getItemName() + " (" + myBid.getAuction().getSellerUsername() + ")");
+        statusView.setText(myBid.getAuction().getStatus());
+        descriptionView.setText(myBid.getAuction().getItemDescription());
         bidderUsernameView.setText(myBid.getBidderUsername());
-        priceView.setText(myBid.getPrice().toString());
+        bidPriceView.setText(myBid.getPrice().toString() + "€");
+        timeRemainingView.setText(millToMins(myBid.getAuction().getTimeRemaining()) + "min");
+    }
+
+    private String millToMins(long millisec) {
+        return millisec / (60000) + ":" + (int) (millisec/1000) % (60);
     }
 }

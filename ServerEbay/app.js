@@ -142,26 +142,13 @@ app.get('/bids', function (req, res) {
     });
 })
 
-// getBidByBidderUsername
-app.get('/bids/getBidByBidderUsername/:username', function (req, res) {
+// getBidsByBidderUsername
+app.get('/bids/getBidsByBidderUsername/:username', function (req, res) {
     MongoClient.connect(mongoUrl, function (error, db) {
         if (error) return funcCallback(error);
 
         db = db.db(dbName);
         db.collection("bids").find({ bidderUsername: req.params.username }).toArray(function (error, result) {
-            if (error) throw error;
-            res.json(result);
-        });
-    });
-})
-
-// getBidByIdAuction
-app.get('/bids/getBidByIdAuction/:idAuction', function (req, res) {
-    MongoClient.connect(mongoUrl, function (error, db) {
-        if (error) return funcCallback(error);
-
-        db = db.db(dbName);
-        db.collection("bids").findOne({ idAuction: req.params.idAuction }, function (error, result) {
             if (error) throw error;
             res.json(result);
         });
@@ -179,6 +166,11 @@ app.post('/bid', function (req, res) {
         if (error) return funcCallback(error);
 
         db = db.db(dbName);
+		
+		db.collection("auctions").updateOne({ _id: new mongodb.ObjectId(req.body.idAuction) }, { $set: { highestBid: req.body } }, function (error, result) {
+            if (error) throw error;
+        });
+		
         db.collection("bids").insertOne(req.body, null, function (error, result) {
             if (error) throw error;
             res.json(result.insertedId);
@@ -228,6 +220,19 @@ app.get('/auctions/getAuctionsBySellerUsername/:username', function (req, res) {
     });
 })
 
+// getAuctionByIdAuction
+app.get('/auctions/getAuctionByIdAuction/:idAuction', function (req, res) {
+    MongoClient.connect(mongoUrl, function (error, db) {
+        if (error) return funcCallback(error);
+
+        db = db.db(dbName);
+        db.collection("auctions").findOne({ _id: new mongodb.ObjectId(req.params.idAuction) }, function (error, result) {
+            if (error) throw error;
+            res.json(result);
+        });
+    });
+})
+
 // addNewAuction
 /*{ 
 	"sellerUsername" : "Entrax",
@@ -247,6 +252,19 @@ app.post('/auction', function (req, res) {
         db.collection("auctions").insertOne(req.body, null, function (error, result) {
             if (error) throw error;
             res.json(result.insertedId);
+        });
+    });
+})
+
+// addBidToAuctionByIdAuction
+app.post('/users/addBidToAuctionByIdAuction/:idAuction', function (req, res) {
+    MongoClient.connect(mongoUrl, function (error, db) {
+        if (error) return funcCallback(error);
+
+        db = db.db(dbName);
+		db.collection("auctions").replaceOne({ _id: new mongodb.ObjectId(req.params.idAuction) }, req.body, function (error, result) {
+            if (error) throw error;
+            res.json(result.modifiedCount);
         });
     });
 })

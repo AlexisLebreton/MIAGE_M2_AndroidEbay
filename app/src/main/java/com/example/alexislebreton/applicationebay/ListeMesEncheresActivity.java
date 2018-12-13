@@ -3,6 +3,7 @@ package com.example.alexislebreton.applicationebay;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
@@ -17,6 +18,7 @@ import android.widget.Toast;
 
 import com.example.alexislebreton.applicationebay.Adapter.MyBidAdapter;
 import com.example.alexislebreton.applicationebay.Utils.ItemClickSupport;
+import com.example.alexislebreton.applicationebay.model.Auction;
 import com.example.alexislebreton.applicationebay.model.Bid;
 import com.example.alexislebreton.applicationebay.model.User;
 import com.example.alexislebreton.applicationebay.rest.ApiClient;
@@ -32,13 +34,14 @@ import retrofit2.Response;
 
 public class ListeMesEncheresActivity extends AppCompatActivity {
     private static final String TAG = "TESTGUI";
+    final ApiInterface apiService =
+            ApiClient.getClient().create(ApiInterface.class);
     private SharedPreferences myPrefs;
     private SharedPreferences.Editor myPrefsEditor;
     private Gson gson = new Gson();
     private User currentUser;
     private SwipeRefreshLayout swipeRefreshLayout;
     private View mProgressView;
-
     private RecyclerView recyclerView;
     private MyBidAdapter myBidAdapter;
     private List<Bid> bids = new ArrayList<>();
@@ -57,9 +60,6 @@ public class ListeMesEncheresActivity extends AppCompatActivity {
 
         mProgressView = findViewById(R.id.progressView_myBids);
 
-        final ApiInterface apiService =
-                ApiClient.getClient().create(ApiInterface.class);
-
         swipeRefreshLayout = findViewById(R.id.swiperefresh_myBids);
         swipeRefreshLayout.setOnRefreshListener(
                 new SwipeRefreshLayout.OnRefreshListener() {
@@ -69,32 +69,32 @@ public class ListeMesEncheresActivity extends AppCompatActivity {
 
                         // This method performs the actual data-refresh operation.
                         // The method calls setRefreshing(false) when it's finished.
-                        showMyBids(apiService);
+                        showMyBids();
                     }
                 }
         );
 
         showProgress(true);
-        showMyBids(apiService);
+        showMyBids();
     }
 
-    private void showMyBids(ApiInterface apiService) {
-        Call<ArrayList<Bid>> getBidByBidderUsername = apiService.getBidByBidderUsername(currentUser.getUsername());
-        getBidByBidderUsername.enqueue(new Callback<ArrayList<Bid>>() {
+    private void showMyBids() {
+        Call<ArrayList<Bid>> getBidsByBidderUsername = apiService.getBidsByBidderUsername(currentUser.getUsername());
+        getBidsByBidderUsername.enqueue(new Callback<ArrayList<Bid>>() {
             @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onResponse(Call<ArrayList<Bid>> call, Response<ArrayList<Bid>> response) {
                 bids = response.body();
                 if (bids.size() != 0) {
-                    Toast.makeText(getApplicationContext(), "Bids !", Toast.LENGTH_LONG).show();
                     recyclerView = findViewById(R.id.myBidsRecyclerView);
                     recyclerView.setLayoutManager(new LinearLayoutManager(ListeMesEncheresActivity.this));
                     myBidAdapter = new MyBidAdapter(bids);
                     recyclerView.setAdapter(myBidAdapter);
                     OnDone();
                 } else {
-                    Toast.makeText(getApplicationContext(), "No Bids !", Toast.LENGTH_LONG).show();
-                    OnDone();
+                    Toast.makeText(getApplicationContext(), "No Bids !", Toast.LENGTH_SHORT).show();
+                    showProgress(false);
+                    swipeRefreshLayout.setRefreshing(false);
                 }
             }
 
@@ -107,8 +107,36 @@ public class ListeMesEncheresActivity extends AppCompatActivity {
         });
     }
 
+    private void getAuction(Bid bid) {
+        Call<Auction> getAuctionByIdAuction = apiService.getAuctionByIdAuction(bid.getIdAuction());
+        getAuctionByIdAuction.enqueue(new Callback<Auction>() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
+            @Override
+            public void onResponse(Call<Auction> call, Response<Auction> response) {
+                Auction auction = response.body();
+                if (auction.getStatus().equals("OUVERTE")) {
+                    myPrefsEditor.putString("auctionSelected", gson.toJson(auction));
+                    myPrefsEditor.apply();
+                    Intent annonceActivity = new Intent(ListeMesEncheresActivity.this, AnnonceActivity.class);
+                    startActivity(annonceActivity);
+                } else {
+                    Toast.makeText(getApplicationContext(), "Enchère close !", Toast.LENGTH_SHORT).show();
+                }
+                OnDone();
+            }
+
+            @Override
+            public void onFailure(Call<Auction> call, Throwable t) {
+                // Log error here since request failed
+                Log.e(TAG, "onFailure Erreur : " + t.toString());
+                OnDone();
+            }
+        });
+    }
+
     private void OnDone() {
         showProgress(false);
+        recyclerView.setAlpha(1);
         swipeRefreshLayout.setRefreshing(false);
         configureOnClickRecyclerView();
     }
@@ -119,7 +147,9 @@ public class ListeMesEncheresActivity extends AppCompatActivity {
                     @Override
                     public void onItemClicked(RecyclerView recyclerView, int position, View v) {
                         Bid bid = myBidAdapter.getBid(position);
-                        Toast.makeText(getApplicationContext(), "You clicked on bid : " + bid.getIdAuction(), Toast.LENGTH_LONG).show();
+                        showProgress(true);
+                        recyclerView.setAlpha(0);
+                        getAuction(bid);
                     }
                 });
     }

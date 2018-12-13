@@ -84,7 +84,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="text"
+            android:inputType="text|number"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/annonce_tv_prix" />
@@ -139,7 +139,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="text"
+            android:inputType="number"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/annonce_tv_derniere_enchere" />
@@ -168,6 +168,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="number"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/annonce_tv_encherir" />
@@ -182,50 +183,24 @@
             app:layout_constraintTop_toBottomOf="@+id/annonce_et_encherir"/>
     </android.support.constraint.ConstraintLayout>
 
+
     <android.support.constraint.ConstraintLayout
-        android:id="@+id/annonce_cl_rdv"
+        android:id="@+id/progressView_annonce_cl"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/annonce_cl_encherir"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/annonce_cl_encherir">
+        app:layout_constraintRight_toRightOf="parent">
 
-        <TextView
-            android:id="@+id/annonce_tv_rdv"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="@string/annonce_tv_rdv"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
-
-        <EditText
-            android:id="@+id/annonce_et_rdv"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="number"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/annonce_tv_rdv" />
-
-        <Button
-            android:id="@+id/annonce_btn_rdv"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="@string/annonce_btn_rdv"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/annonce_et_rdv"/>
-
-        <Button
-            android:id="@+id/annonce_btn_rdvannuler"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="@string/annonce_btn_rdvannuler"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/annonce_btn_rdv"/>
+        <ProgressBar
+            android:id="@+id/progressView_annonce"
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent" />
 
     </android.support.constraint.ConstraintLayout>
 

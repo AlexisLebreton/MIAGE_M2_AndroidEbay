@@ -86,15 +86,15 @@ public class ListeMesAnnoncesActivity extends AppCompatActivity {
             public void onResponse(Call<ArrayList<Auction>> call, Response<ArrayList<Auction>> response) {
                 auctions = response.body();
                 if (auctions.size() != 0) {
-                    Toast.makeText(getApplicationContext(), "Auctions !", Toast.LENGTH_LONG).show();
                     recyclerView = findViewById(R.id.myAuctionsRecyclerView);
                     recyclerView.setLayoutManager(new LinearLayoutManager(ListeMesAnnoncesActivity.this));
                     myAuctionAdapter = new MyAuctionAdapter(auctions);
                     recyclerView.setAdapter(myAuctionAdapter);
                     OnDone();
                 } else {
-                    Toast.makeText(getApplicationContext(), "No Auctions !", Toast.LENGTH_LONG).show();
-                    OnDone();
+                    Toast.makeText(getApplicationContext(), "Pas d'annonces à afficher !", Toast.LENGTH_SHORT).show();
+                    showProgress(false);
+                    swipeRefreshLayout.setRefreshing(false);
                 }
             }
 
@@ -119,7 +119,12 @@ public class ListeMesAnnoncesActivity extends AppCompatActivity {
                     @Override
                     public void onItemClicked(RecyclerView recyclerView, int position, View v) {
                         Auction auction = myAuctionAdapter.getAuction(position);
-                        Toast.makeText(getApplicationContext(), "You clicked on auction : " + auction.getItemName(), Toast.LENGTH_LONG).show();
+                        User bidder = auction.getHighestBid().getBidder();
+                        if (auction.getStatus().equals("OUVERTE")) {
+                            Toast.makeText(getApplicationContext(), "La plus haute enchère est de " + bidder.getUsername() + " avec " + auction.getHighestBid().getPrice() + "€.", Toast.LENGTH_LONG).show();
+                        } else {
+                            Toast.makeText(getApplicationContext(), "Le gagnat de votre enchère est " + bidder.getFirstname() + " " + bidder.getLastname() + " avec " + auction.getHighestBid().getPrice() + "€. Son adresse est : " + bidder.getAdress() + ". Vous pouvez le contacter à l'adresse suivante : " + bidder.getMail(), Toast.LENGTH_LONG).show();
+                        }
                     }
                 });
     }

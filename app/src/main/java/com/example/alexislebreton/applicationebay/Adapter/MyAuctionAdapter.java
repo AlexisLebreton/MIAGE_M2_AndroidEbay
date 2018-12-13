@@ -1,5 +1,6 @@
 package com.example.alexislebreton.applicationebay.Adapter;
 
+import android.os.CountDownTimer;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,20 +15,33 @@ import java.util.List;
 public class MyAuctionAdapter extends RecyclerView.Adapter<AuctionViewHolder> {
     List<Auction> list;
 
-    //ajouter un constructeur prenant en entrée une liste
-    public MyAuctionAdapter(List<Auction> list) {
+    public MyAuctionAdapter(final List<Auction> list) {
         this.list = list;
+
+        long maxTime = System.currentTimeMillis();
+        for (Auction item : list) {
+            maxTime = Math.max(maxTime, item.getEndTime());
+        }
+
+        new CountDownTimer(maxTime - System.currentTimeMillis(), 1000) {
+            @Override
+            public void onTick(long l) {
+                notifyDataSetChanged();
+            }
+
+            @Override
+            public void onFinish() {
+                notifyDataSetChanged();
+            }
+        }.start();
     }
 
-    //cette fonction permet de créer les viewHolder
-    //et par la même indiquer la vue à inflater (à partir des layout xml)
     @Override
     public AuctionViewHolder onCreateViewHolder(ViewGroup viewGroup, int itemType) {
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.cell_auctions, viewGroup, false);
         return new AuctionViewHolder(view);
     }
 
-    //c'est ici que nous allons remplir notre cellule avec le texte/image de chaque MyObjects
     @Override
     public void onBindViewHolder(AuctionViewHolder myViewHolder, int position) {
         Auction myObject = list.get(position);
@@ -39,7 +53,7 @@ public class MyAuctionAdapter extends RecyclerView.Adapter<AuctionViewHolder> {
         return list.size();
     }
 
-    public Auction getAuction(int position){
+    public Auction getAuction(int position) {
         return this.list.get(position);
     }
 }

@@ -14,6 +14,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -106,14 +107,16 @@ public class AccueilActivity extends AppCompatActivity
             public void onResponse(Call<ArrayList<Auction>> call, Response<ArrayList<Auction>> response) {
                 auctions = response.body();
                 if (auctions.size() != 0) {
-                    Toast.makeText(getApplicationContext(), "Auctions !", Toast.LENGTH_LONG).show();
-
                     recyclerView = findViewById(R.id.allAuctionsRecyclerView);
-                    recyclerView.setLayoutManager(new LinearLayoutManager(AccueilActivity.this));è
+                    recyclerView.setLayoutManager(new LinearLayoutManager(AccueilActivity.this));
+                    recyclerView.setItemAnimator(new DefaultItemAnimator());
+                    myAuctionAdapter = new MyAuctionAdapter(auctions);
+                    recyclerView.setAdapter(myAuctionAdapter);
                     OnDone();
                 } else {
-                    Toast.makeText(getApplicationContext(), "No Auctions !", Toast.LENGTH_LONG).show();
-                    OnDone();
+                    Toast.makeText(getApplicationContext(), "Pas d'annonces à afficher !", Toast.LENGTH_SHORT).show();
+                    showProgress(false);
+                    swipeRefreshLayout.setRefreshing(false);
                 }
             }
 
@@ -138,7 +141,14 @@ public class AccueilActivity extends AppCompatActivity
                     @Override
                     public void onItemClicked(RecyclerView recyclerView, int position, View v) {
                         Auction auction = myAuctionAdapter.getAuction(position);
-                        Toast.makeText(getApplicationContext(), "You clicked on auction : " + auction.getItemName(), Toast.LENGTH_LONG).show();
+                        if (auction.getStatus().equals("OUVERTE")) {
+                            myPrefsEditor.putString("auctionSelected", gson.toJson(auction));
+                            myPrefsEditor.apply();
+                            Intent annonceActivity = new Intent(AccueilActivity.this, AnnonceActivity.class);
+                            startActivity(annonceActivity);
+                        } else {
+                            Toast.makeText(getApplicationContext(), "Enchère close !", Toast.LENGTH_SHORT).show();
+                        }
                     }
                 });
     }

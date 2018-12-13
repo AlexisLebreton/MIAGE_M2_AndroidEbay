@@ -84,7 +84,7 @@ public class CompteActivity extends AppCompatActivity {
                         @RequiresApi(api = Build.VERSION_CODES.N)
                         @Override
                         public void onResponse(Call<String> call, Response<String> response) {
-                            Toast.makeText(getApplicationContext(), "Inscription réussie !\n Bienvenue " + user.getUsername(), Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(), "Inscription réussie !\n Bienvenue " + user.getUsername(), Toast.LENGTH_SHORT).show();
                             finish();
                         }
 
@@ -92,7 +92,6 @@ public class CompteActivity extends AppCompatActivity {
                         public void onFailure(Call<String> call, Throwable t) {
                             // Log error here since request failed
                             Log.e(TAG, "onFailure Erreur : " + t.toString());
-                            Toast.makeText(getApplicationContext(), "Inscription ratée !", Toast.LENGTH_LONG).show();
                             showProgress(false);
                             finish();
                         }
@@ -105,14 +104,14 @@ public class CompteActivity extends AppCompatActivity {
                         @Override
                         public void onResponse(Call<String> call, Response<String> response) {
                             if (!response.body().equals("0")) {
-                                Toast.makeText(getApplicationContext(), "Modification(s) réussie !", Toast.LENGTH_LONG).show();
+                                Toast.makeText(getApplicationContext(), "Modification(s) réussie !", Toast.LENGTH_SHORT).show();
                                 updatedUser.set_id(currentUser.get_id());
                                 myPrefsEditor.putString("currentUser", gson.toJson(updatedUser));
                                 myPrefsEditor.apply();
                                 showProgress(false);
                                 finish();
                             } else {
-                                Toast.makeText(getApplicationContext(), "Modification(s) ratée !", Toast.LENGTH_LONG).show();
+                                Toast.makeText(getApplicationContext(), "Modification(s) ratée !", Toast.LENGTH_SHORT).show();
                                 showProgress(false);
                                 finish();
                             }

@@ -25,14 +25,14 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class ConnexionActivity extends AppCompatActivity {
+    private static final String TAG = "TESTGUI";
+    EditText connexion_et_login;
+    EditText connexion_et_motdepasse;
     private SharedPreferences myPrefs;
     private SharedPreferences.Editor myPrefsEditor;
     private Gson gson = new Gson();
-    private static final String TAG = "TESTGUI";
     private User currentUser;
     private User newUser;
-    EditText connexion_et_login;
-    EditText connexion_et_motdepasse;
     private View mProgressView;
     private View connexion_cl_login;
     private View connexion_cl_motdepasse;
@@ -85,17 +85,17 @@ public class ConnexionActivity extends AppCompatActivity {
                         newUser = response.body();
                         if (userExist(newUser)) {
                             if (checkPwd(newUser, pwd)) {
-                                Toast.makeText(getApplicationContext(), "Bienvenue " + newUser.getUsername(), Toast.LENGTH_LONG).show();
+                                Toast.makeText(getApplicationContext(), "Bienvenue " + newUser.getUsername(), Toast.LENGTH_SHORT).show();
                                 myPrefsEditor.putString("currentUser", gson.toJson(newUser));
                                 myPrefsEditor.apply();
                                 startActivity(accueilActivity);
                                 showProgress(false);
                             } else {
-                                Toast.makeText(getApplicationContext(), "Mot de passe incorrect !", Toast.LENGTH_LONG).show();
+                                Toast.makeText(getApplicationContext(), "Mot de passe incorrect !", Toast.LENGTH_SHORT).show();
                                 showProgress(false);
                             }
                         } else {
-                            Toast.makeText(getApplicationContext(), "Login inconnu !", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(), "Login inconnu !", Toast.LENGTH_SHORT).show();
                             showProgress(false);
                         }
                     }

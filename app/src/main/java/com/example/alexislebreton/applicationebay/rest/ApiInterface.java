@@ -35,11 +35,8 @@ public interface ApiInterface {
     @GET("bids")
     Call<ArrayList<Bid>> getAllBids();
 
-    @GET("bids/getBidByBidderUsername/{username}")
-    Call<ArrayList<Bid>> getBidByBidderUsername(@Path("username") String username);
-
-    @GET("bids/getBidByIdAuction/{idAuction}")
-    Call<Bid> getBidByIdAuction(@Path("idAuction") String idAuction);
+    @GET("bids/getBidsByBidderUsername/{username}")
+    Call<ArrayList<Bid>> getBidsByBidderUsername(@Path("username") String username);
 
     @POST("bid")
     Call<String> addNewBid(@Body Bid bid);
@@ -53,6 +50,9 @@ public interface ApiInterface {
 
     @GET("auctions/getAuctionsBySellerUsername/{username}")
     Call<ArrayList<Auction>> getAuctionsBySellerUsername(@Path("username") String username);
+
+    @GET("auctions/getAuctionByIdAuction/{idAuction}")
+    Call<Auction> getAuctionByIdAuction(@Path("idAuction") String idAuction);
 
     @POST("auction")
     Call<String> addNewAuction(@Body Auction auction);

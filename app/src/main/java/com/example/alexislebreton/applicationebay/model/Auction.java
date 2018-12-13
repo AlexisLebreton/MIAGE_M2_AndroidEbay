@@ -10,35 +10,27 @@ public class Auction {
     private String itemDescription;
     private Long minPrice;
     private String date;
-    private Long timespan;
+    private Long endTime;
     private String photoURL;
-    private String status;
+    private Bid highestBid;
 
-    public Auction(String sellerUsername, String itemName, String itemDescription, Long minPrice, String date, String photoURL) {
+    public Auction(String sellerUsername, String itemName, String itemDescription, Long minPrice, String date, String photoURL, Bid highestBid) {
         this.sellerUsername = sellerUsername;
         this.itemName = itemName;
         this.itemDescription = itemDescription;
         this.minPrice = minPrice;
         this.date = date;
-        this.timespan = 5L;
         this.photoURL = photoURL;
-        this.status = "ON";
+        this.highestBid = highestBid;
+        this.endTime = System.currentTimeMillis() + 5 * 60000;
     }
 
     public String get_id() {
         return _id;
     }
 
-    public void set_id(String _id) {
-        this._id = _id;
-    }
-
     public String getSellerUsername() {
         return sellerUsername;
-    }
-
-    public void setSellerUsername(String sellerUsername) {
-        this.sellerUsername = sellerUsername;
     }
 
     public String getItemName() {
@@ -53,16 +45,8 @@ public class Auction {
         return itemDescription;
     }
 
-    public void setItemDescription(String itemDescription) {
-        this.itemDescription = itemDescription;
-    }
-
     public Long getMinPrice() {
         return minPrice;
-    }
-
-    public void setMinPrice(Long minPrice) {
-        this.minPrice = minPrice;
     }
 
     public String getDate() {
@@ -71,14 +55,6 @@ public class Auction {
 
     public void setDate(String date) {
         this.date = date;
-    }
-
-    public Long getTimespan() {
-        return timespan;
-    }
-
-    public void setTimespan(Long timespan) {
-        this.timespan = timespan;
     }
 
     public String getPhotoURL() {
@@ -90,33 +66,38 @@ public class Auction {
     }
 
     public String getStatus() {
-        return status;
+        return (this.endTime - System.currentTimeMillis() <= 0) ? "CLOTUREE" : "OUVERTE";
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public Bid getHighestBid() {
+        return highestBid;
+    }
+
+    public Long getTimeRemaining() {
+        return (this.endTime - System.currentTimeMillis() <= 0) ? 0 : this.endTime - System.currentTimeMillis();
+    }
+
+    public Long getEndTime() {
+        return endTime;
     }
 
     public String toString() {
         StringBuilder result = new StringBuilder();
         String newLine = System.getProperty("line.separator");
 
-        result.append( this.getClass().getName() );
-        result.append( " Object {" );
+        result.append(this.getClass().getName());
+        result.append(" Object {");
         result.append(newLine);
 
-        //determine fields declared in this class only (no fields of superclass)
         Field[] fields = this.getClass().getDeclaredFields();
 
-        //print field names paired with their values
-        for ( Field field : fields  ) {
+        for (Field field : fields) {
             result.append("  ");
             try {
-                result.append( field.getName() );
+                result.append(field.getName());
                 result.append(": ");
-                //requires access to private field:
-                result.append( field.get(this) );
-            } catch ( IllegalAccessException ex ) {
+                result.append(field.get(this));
+            } catch (IllegalAccessException ex) {
                 System.out.println(ex);
             }
             result.append(newLine);

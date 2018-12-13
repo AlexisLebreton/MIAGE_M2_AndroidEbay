@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.alexislebreton.applicationebay.model.Auction;
+import com.example.alexislebreton.applicationebay.model.Bid;
 import com.example.alexislebreton.applicationebay.model.User;
 import com.example.alexislebreton.applicationebay.rest.ApiClient;
 import com.example.alexislebreton.applicationebay.rest.ApiInterface;
@@ -46,24 +47,25 @@ public class AjouterAnnonceActivity extends AppCompatActivity {
         final ApiInterface apiService =
                 ApiClient.getClient().create(ApiInterface.class);
 
-        final EditText ajouterannonce_et_nom = (EditText) findViewById(R.id.ajouterannonce_et_nom);
-        final EditText ajouterannonce_et_description = (EditText) findViewById(R.id.ajouterannonce_et_description);
-        final EditText ajouterannonce_et_prix = (EditText) findViewById(R.id.ajouterannonce_et_prix);
+        final EditText ajouterannonce_et_nom = findViewById(R.id.ajouterannonce_et_nom);
+        final EditText ajouterannonce_et_description = findViewById(R.id.ajouterannonce_et_description);
+        final EditText ajouterannonce_et_prix = findViewById(R.id.ajouterannonce_et_prix);
 
-        final Button ajouterannonce_btn_enregistrer = (Button) findViewById(R.id.ajouterannonce_btn_enregistrer);
+        final Button ajouterannonce_btn_enregistrer = findViewById(R.id.ajouterannonce_btn_enregistrer);
         ajouterannonce_btn_enregistrer.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 String nom = ajouterannonce_et_nom.getText().toString();
                 String description = ajouterannonce_et_description.getText().toString();
                 String prix = ajouterannonce_et_prix.getText().toString();
 
-                final Auction auction = new Auction(currentUser.getUsername(), nom, description, Long.parseLong(prix), new Date().toString(), "");
+                Bid bid = new Bid("", currentUser.getUsername(), Long.parseLong(prix));
+                final Auction auction = new Auction(currentUser.getUsername(), nom, description, Long.parseLong(prix), new Date().toString(), "", bid);
                 Call<String> addNewAuction = apiService.addNewAuction(auction);
                 addNewAuction.enqueue(new Callback<String>() {
                     @RequiresApi(api = Build.VERSION_CODES.N)
                     @Override
                     public void onResponse(Call<String> call, Response<String> response) {
-                        Toast.makeText(getApplicationContext(), "Auction ajoutée !", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "Annonce ajoutée !", Toast.LENGTH_SHORT).show();
                         finish();
                     }
 
@@ -71,7 +73,6 @@ public class AjouterAnnonceActivity extends AppCompatActivity {
                     public void onFailure(Call<String> call, Throwable t) {
                         // Log error here since request failed
                         Log.e(TAG, "onFailure Erreur : " + t.toString());
-                        Toast.makeText(getApplicationContext(), "Auction pas ajoutée !", Toast.LENGTH_LONG).show();
                         finish();
                     }
                 });

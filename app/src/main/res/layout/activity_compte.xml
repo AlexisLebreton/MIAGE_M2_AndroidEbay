@@ -209,7 +209,6 @@
     </android.support.constraint.ConstraintLayout>
 
     <android.support.constraint.ConstraintLayout
-
         android:id="@+id/compte_cl_enregistrer"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
