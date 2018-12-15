@@ -1,5 +1,7 @@
 package com.example.alexislebreton.applicationebay;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Build;
@@ -31,6 +33,7 @@ public class AjouterAnnonceActivity extends AppCompatActivity {
     private SharedPreferences.Editor myPrefsEditor;
     private Gson gson = new Gson();
     private User currentUser;
+    private View mProgressView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +47,8 @@ public class AjouterAnnonceActivity extends AppCompatActivity {
         String json = myPrefs.getString("currentUser", "");
         currentUser = gson.fromJson(json, User.class);
 
+        mProgressView = findViewById(R.id.progressView_addAnnonce);
+
         final ApiInterface apiService =
                 ApiClient.getClient().create(ApiInterface.class);
 
@@ -54,6 +59,8 @@ public class AjouterAnnonceActivity extends AppCompatActivity {
         final Button ajouterannonce_btn_enregistrer = findViewById(R.id.ajouterannonce_btn_enregistrer);
         ajouterannonce_btn_enregistrer.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                showProgress(true);
+
                 String nom = ajouterannonce_et_nom.getText().toString();
                 String description = ajouterannonce_et_description.getText().toString();
                 String prix = ajouterannonce_et_prix.getText().toString();
@@ -66,6 +73,7 @@ public class AjouterAnnonceActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(Call<String> call, Response<String> response) {
                         Toast.makeText(getApplicationContext(), "Annonce ajoutée !", Toast.LENGTH_SHORT).show();
+                        showProgress(false);
                         finish();
                     }
 
@@ -73,11 +81,29 @@ public class AjouterAnnonceActivity extends AppCompatActivity {
                     public void onFailure(Call<String> call, Throwable t) {
                         // Log error here since request failed
                         Log.e(TAG, "onFailure Erreur : " + t.toString());
+                        showProgress(false);
                         finish();
                     }
                 });
             }
         });
+    }
+
+    private void showProgress(final boolean show) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB_MR2) {
+            int shortAnimTime = getResources().getInteger(android.R.integer.config_shortAnimTime);
+
+            mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
+            mProgressView.animate().setDuration(shortAnimTime).alpha(
+                    show ? 1 : 0).setListener(new AnimatorListenerAdapter() {
+                @Override
+                public void onAnimationEnd(Animator animation) {
+                    mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
+                }
+            });
+        } else {
+            mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
+        }
     }
 
 

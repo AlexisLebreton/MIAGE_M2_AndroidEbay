@@ -81,6 +81,7 @@ public class AnnonceActivity extends AppCompatActivity {
                             @Override
                             public void onResponse(Call<String> call, Response<String> response) {
                                 Toast.makeText(getApplicationContext(), "Enchère ajoutée !", Toast.LENGTH_SHORT).show();
+                                showProgress(false);
                                 finish();
                             }
 
